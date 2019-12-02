@@ -4,11 +4,11 @@ namespace Phalcon\Init\BackOffice\Controllers\Web;
 
 use Phalcon\Mvc\Controller;
 
-class IndexController extends Controller
+class DataController extends Controller
 {
     public function indexAction()
     {
-        $this->view->pick('index');  
+        $this->view->pick('backoffice/data');  
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
 

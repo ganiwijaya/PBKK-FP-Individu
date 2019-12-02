@@ -46,7 +46,6 @@ class DashboardController extends Controller
         $this->view->pick('dashboard/daftar');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
-        $this->assets->addCss('css/style.css', true);
 
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
@@ -54,7 +53,6 @@ class DashboardController extends Controller
         $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
         $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
         $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
-        $this->assets->addJs('js/style.js', true);
     }
 
     public function masukAction()
@@ -81,7 +79,7 @@ class DashboardController extends Controller
         $user->email = $request->getPost('email');
         $user->password = $request->getPost('password');
     	$user->save();
-        $this->response->redirect('/');
+        $this->response->redirect('/masuk');
     }
 
     public function loginAction()
@@ -97,7 +95,7 @@ class DashboardController extends Controller
         {
             if($user->password == $pass){
                 $this->session->set('auth',['username' => $user->username]);
-                $this->flashSession->success('Anda telah login');
+                // $this->flashSession->success('Anda telah login');
                 $this->response->redirect('/backoffice');
                 // var_dump("masuk");die();
             }

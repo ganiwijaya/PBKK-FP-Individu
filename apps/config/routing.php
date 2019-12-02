@@ -66,6 +66,13 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'logout'
 	]);
 
+	$router->addGet('/data', [
+	    'namespace' => 'Phalcon\Init\Backoffice\Controllers\Web',
+		'module' => 'backoffice',
+	    'controller' => 'Data',
+	    'action' => 'data'
+	]);
+
 
 	/**
 	 * Not Found Routing
