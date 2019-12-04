@@ -109,11 +109,19 @@
                             <input type="text" class="form-control rounded-0" id="nun" name="nun" placeholder="Nilai UN SMP" required>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col form-group">
                                 <label for="ipa">Nilai IPA</label>
                                 <input type="text" class="form-control rounded-0" id="ipa" name="ipa" placeholder="IPA" required>
                             </div>
-                            <div class="col">
+                            <div class="col form-group">
+                                <label for="ind">Nilai Bhs Indonesia</label>
+                                <input type="text" class="form-control rounded-0" id="ind" name="ind" placeholder="Bhs Indo" required>
+                            </div>
+                            <div class="col form-group">
+                                <label for="ipa">Nilai IPA</label>
+                                <input type="text" class="form-control rounded-0" id="ipa" name="ipa" placeholder="IPA" required>
+                            </div>
+                            <div class="col form-group">
                                 <label for="ind">Nilai Bhs Indonesia</label>
                                 <input type="text" class="form-control rounded-0" id="ind" name="ind" placeholder="Bhs Indo" required>
                             </div>
