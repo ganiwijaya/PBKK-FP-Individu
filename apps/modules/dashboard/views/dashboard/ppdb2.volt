@@ -38,31 +38,21 @@
     </nav>
 
     <div class="wrapper">
-        {% if session.has('auth')%}
         <nav id="sidebar" class="active">
             <ul class="list-unstyled components">
                 <li>
-                    {{ link_to('/user', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
+                    {{ link_to('', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
                 </li>
                 <li>
-                    {{ link_to('/profil', '<i class="fa fa-user"></i> Profil', 'class': 'nav-link') }}
+                    {{ link_to('/daftar', '<i class="fa fa-user"></i> Daftar', 'class': 'nav-link') }}
                 </li>
                 <li class="active">
-                    {{ link_to('/ppdb', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
+                    {{ link_to('/ppdb2', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
-        {% endif %}
 
         <div id="content">
-            {% if session.has('auth') == false %}
-            <div class="card mb-3 border-0">
-                <div class="card-body">
-                    <h3><center>404 Not found</center></h3>
-                </div>
-            </div>
-            {% endif %}
-            {% if session.has('auth')%}
             <div class="card mb-3 border-0">
                 <div class="card-body">
                     <h4>Pendaftar PPDB 2019</h4>
@@ -72,7 +62,7 @@
             <div class="card border-0">
                 <div class="card-body">
                     <table class="table table-hover">
-                        <thead>
+                        <thead-light>
                             <tr>
                                 <th>Nama</th>
                                 <th>Asal Sekolah</th>
@@ -99,7 +89,6 @@
                     </table>
                 </div>
             </div>
-            {% endif %}
             
         </div>
     </div>

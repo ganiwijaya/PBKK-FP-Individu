@@ -7,19 +7,19 @@
     {{ assets.outputJs() }}
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-white navbar-light fixed-top">
+    <nav class="navbar navbar-primary bg-primary fixed-top">
             <!-- Brand -->
-        <button type="button" id="sidebarCollapse" class="btn btn-putih border-0 rounded-0" >
+        <button type="button" id="sidebarCollapse" class="btn btn-primary border-0" >
                 <i class="fas fa-bars"></i>&nbsp&nbsp&nbsp mySMArt
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             {% if session.has('auth')%}
                 <ul class="nav ml-auto">
-                    <li class="nav-item dropdown navbar-primary">
-                        <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown">
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-primary border-0" href="#" id="navbardrop" data-toggle="dropdown">
                             {{ session.get('auth')['username'] }}
                         </a>
-                        <div class="dropdown-menu border-0 rounded-0">
+                        <div class="dropdown-menu">
                             <form action="{{url('/logout')}}" method="post">
                                 <button type="submit" class="dropdown-item">Keluar</button>
                             </form>
@@ -30,7 +30,7 @@
             {% if session.has('auth') == false %}
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item">
-                        {{ link_to('/masuk', 'mySMArt', 'class': 'btn btn-putih rounded-0') }}
+                        {{ link_to('/masuk', 'mySMArt', 'class': 'btn btn-primary') }}
                     </li>
                 </ul>
             {% endif %}
@@ -45,7 +45,7 @@
                     {{ link_to('/user', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
                 </li>
                 <li class="active">
-                    {{ link_to('/profil', '<i class="fa fa-star"></i> Profil', 'class': 'nav-link') }}
+                    {{ link_to('/profil', '<i class="fa fa-user"></i> Profil', 'class': 'nav-link') }}
                 </li>
                 <li>
                     {{ link_to('/ppdb', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
@@ -56,40 +56,65 @@
 
         <div id="content">
             {% if session.has('auth') == false %}
-            <div class="card border-0 rounded-0 mb-3">
+            <div class="card border-0 mb-3">
                 <div class="card-body">
                     <h3><center>404 Not found</center></h3>
                 </div>
             </div>
             {% endif %}
             {% if session.has('auth')%}
-            <div class="card border-0 rounded-0 mb-3">
+            <div class="card border-0 mb-3">
                 <div class="card-body">
                     <h4>Data Anda</h4>
-                    Data PPDB
+                    Data Anda dalam PPDB.
                 </div>
             </div>
-            <div class="card border-0 rounded-0">
+            <div class="card border-0 mb-3">
                 <div class="card-body">
-                    <form action="{{ url('/post_register') }}" method="edit">
-                        <div class="form-group">
-                            <label for="username">Nama Lengkap</label>
-                            <input type="text" class="form-control rounded-0" id="username" name="username" required value="{{ auth.username }}">
+                    <h5>Akun</h5>
+                    <hr>
+                    Nama<br>
+                    <strong>{{ session.get('auth')['username'] }}</strong>
+                    <hr>
+                    Email<br>
+                    <strong>{{ session.get('auth')['email'] }}</strong>
+                </div>
+            </div>
+            <div class="card border-0 mb-3">
+                <div class="card-body">
+                    <h5>Data PPDB</h5>
+                    <hr>
+                    NISN<br>
+                    <strong>{{ session.get('auth')['nisn'] }}</strong>
+                    <hr>
+                    Asal Sekolah<br>
+                    <strong>{{ session.get('auth')['sekolah'] }}</strong>
+                    <hr>
+                    Nilai Ujian SMP<br>
+                    <strong>{{ session.get('auth')['nun'] }}</strong>
+                    <hr>
+                    Rincian:
+                    <div class="row">
+                        <div class="col-sm">
+                            IPA<br>
+                            <strong>{{ session.get('auth')['ipa'] }}</strong>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control rounded-0" id="email" name="email" required>
+                        <div class="col-sm">
+                            B. Indonesia<br>
+                            <strong>{{ session.get('auth')['ind'] }}</strong>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control rounded-0" id="password" name="password" required>
+                        <div class="col-sm">
+                            Matematika<br>
+                            <strong>{{ session.get('auth')['mtk'] }}</strong>
                         </div>
-                        <button type="submit" class="btn btn-primary rounded-0">Submit</button>
-                    </form>
+                        <div class="col-sm">
+                            B. Inggris<br>
+                            <strong>{{ session.get('auth')['eng'] }}</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endif %}
-            
         </div>
     </div>
  

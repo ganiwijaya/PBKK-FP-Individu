@@ -17,6 +17,15 @@ class Users extends Model
     public $username;
     public $email;
     public $pass;
+    public $sekolah;
+    public $kota;
+    public $hp;
+    public $skhun;
+    public $nun;
+    public $ipa;
+    public $ind;
+    public $mtk;
+    public $eng;
 
     // public function gen_uuid() {
     //     return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',

@@ -66,6 +66,13 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'ppdb'
 	]);
 
+	$router->addGet('/ppdb2', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'ppdb2'
+	]);
+
 	$router->addPost('/post_register', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',

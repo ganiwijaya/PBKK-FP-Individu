@@ -84,6 +84,7 @@ class DashboardController extends Controller
         $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
         $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
         $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
+
     }
 
     public function ppdbAction()
@@ -97,6 +98,25 @@ class DashboardController extends Controller
         $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
         $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
         $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
+
+        $users = Users::find();
+        $this->view->users = $users;
+    }
+
+    public function ppdb2Action()
+    {
+        $this->view->pick('dashboard/ppdb2');
+        $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
+        $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
+        $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
+        $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
+        $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
+        $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
+        
+        $users = Users::find();
+        $this->view->users = $users;
     }
 
     public function storeAction()
@@ -107,6 +127,15 @@ class DashboardController extends Controller
         $user->username = $request->getPost('username');
         $user->email = $request->getPost('email');
         $user->password = $request->getPost('password');
+        $user->sekolah = $request->getPost('sekolah');
+        $user->kota = $request->getPost('kota');
+        $user->hp = $request->getPost('hp');
+        $user->skhun = $request->getPost('skhun');
+        $user->nun = $request->getPost('nun');
+        $user->ipa = $request->getPost('ipa');
+        $user->ind = $request->getPost('ind');
+        $user->mtk = $request->getPost('mtk');
+        $user->eng = $request->getPost('eng');
     	$user->save();
         $this->response->redirect('/masuk');
     }
@@ -123,7 +152,17 @@ class DashboardController extends Controller
         if($user)
         {
             if($user->password == $pass){
-                $this->session->set('auth',['username' => $user->username]);
+                $this->session->set('auth',[
+                    'username' => $user->username,
+                    'email' => $user->email,
+                    'nisn' => $user->nisn,
+                    'sekolah' => $user->sekolah,
+                    'nun' => $user->nun,
+                    'ipa' => $user->ipa,
+                    'ind' => $user->ind,
+                    'mtk' => $user->mtk,
+                    'eng' => $user->eng
+                ]);
                 $this->response->redirect('/user');
                 // var_dump("masuk");die();
             }

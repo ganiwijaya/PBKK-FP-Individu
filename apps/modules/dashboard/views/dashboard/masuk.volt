@@ -7,19 +7,19 @@
     {{ assets.outputJs() }}
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-white navbar-light fixed-top">
+    <nav class="navbar navbar-primary bg-primary fixed-top">
             <!-- Brand -->
-        <button type="button" id="sidebarCollapse" class="btn btn-putih border-0 rounded-0" >
+        <button type="button" id="sidebarCollapse" class="btn btn-primary border-0" >
                 <i class="fas fa-bars"></i>&nbsp&nbsp&nbsp SMA Lawu
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             {% if session.has('auth')%}
                 <ul class="nav ml-auto">
-                    <li class="nav-item dropdown navbar-primary">
-                        <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown">
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-primary border-0" href="#" id="navbardrop" data-toggle="dropdown">
                             {{ session.get('auth')['username'] }}
                         </a>
-                        <div class="dropdown-menu border-0 rounded-0">
+                        <div class="dropdown-menu">
                             <form action="{{url('/logout')}}" method="post">
                                 <button type="submit" class="dropdown-item">Keluar</button>
                             </form>
@@ -30,7 +30,7 @@
             {% if session.has('auth') == false %}
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item">
-                        {{ link_to('/masuk', 'mySMArt', 'class': 'btn btn-putih rounded-0') }}
+                        {{ link_to('/masuk', 'mySMArt', 'class': 'btn btn-primary') }}
                     </li>
                 </ul>
             {% endif %}
@@ -44,23 +44,26 @@
                     {{ link_to('', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
                 </li>
                 <li>
-                    {{ link_to('/daftar', '<i class="fa fa-edit"></i> Daftar', 'class': 'nav-link') }}
+                    {{ link_to('/daftar', '<i class="fa fa-user"></i> Daftar', 'class': 'nav-link') }}
+                </li>
+                <li>
+                    {{ link_to('/ppdb2', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
 
         <div id="content">
-            <div class="card border-0 rounded-0 mb-3">
+            <div class="card border-0 mb-3">
                 <div class="card-body">
                     <h4>Masuk ke mySMArt</h4>
                     Masuk dengan akun Anda.
                 </div>
             </div>
-            <div class="card border-0 rounded-0">
+            <div class="card border-0">
                 <div class="card-body">
                     {{ flashSession.output() }}
                     {% if session.has('auth')%}
-                    <div class="alert alert-success rounded-0" role="alert">
+                    <div class="alert alert-success" role="alert">
                         Anda berhasil masuk.
                     </div>
                     {% endif %}
@@ -68,13 +71,13 @@
                     <form action="{{url('/login')}}" method="post">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="em" class="form-control rounded-0">
+                            <input type="email" name="em" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="pw" class="form-control rounded-0">
+                            <input type="password" name="pw" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary rounded-0">Masuk</button>
+                        <button type="submit" class="btn btn-primary">Masuk</button>
                     </form>
                     {% endif %}
                 </div>

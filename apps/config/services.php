@@ -102,10 +102,10 @@ $di->set(
     function () {
         $flash = new FlashSession(
             [
-                'error'   => 'alert alert-danger alert-dismissible fade show rounded-0',
-                'success' => 'alert alert-success alert-dismissible fade show rounded-0',
-                'notice'  => 'alert alert-info alert-dismissible fade show rounded-0',
-                'warning' => 'alert alert-warning alert-dismissible fade show rounded-0',
+                'error'   => 'alert alert-danger alert-dismissible fade show',
+                'success' => 'alert alert-success alert-dismissible fade show',
+                'notice'  => 'alert alert-info alert-dismissible fade show',
+                'warning' => 'alert alert-warning alert-dismissible fade show',
             ]
         );
 
