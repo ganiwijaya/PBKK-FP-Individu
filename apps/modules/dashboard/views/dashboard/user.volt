@@ -48,7 +48,7 @@
                     {{ link_to('/profil', '<i class="fa fa-user"></i> Profil', 'class': 'nav-link') }}
                 </li>
                 <li>
-                    {{ link_to('/ppdb', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
+                    {{ link_to('/ppdb', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>

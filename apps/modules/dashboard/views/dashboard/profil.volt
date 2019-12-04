@@ -48,7 +48,7 @@
                     {{ link_to('/profil', '<i class="fa fa-user"></i> Profil', 'class': 'nav-link') }}
                 </li>
                 <li>
-                    {{ link_to('/ppdb', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
+                    {{ link_to('/ppdb', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
@@ -65,8 +65,15 @@
             {% if session.has('auth')%}
             <div class="card border-0 mb-3">
                 <div class="card-body">
-                    <h4>Data Anda</h4>
-                    Data Anda dalam PPDB.
+                    <div class="row">
+                        <div class="col-sm">
+                            <h4>Data Anda</h4>
+                            Data Anda di PPDB.
+                        </div>
+                        <div class="col-sm">
+                            {{ link_to('/edit', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary float-right') }}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card border-0 mb-3">

@@ -59,6 +59,13 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'profil'
 	]);
 
+	$router->addGet('/edit', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'edit'
+	]);
+
 	$router->addGet('/ppdb', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',

@@ -48,7 +48,7 @@
                     {{ link_to('/profil', '<i class="fa fa-user"></i> Profil', 'class': 'nav-link') }}
                 </li>
                 <li class="active">
-                    {{ link_to('/ppdb', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
+                    {{ link_to('/ppdb', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
@@ -74,6 +74,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Asal Sekolah</th>
                                 <th>IPA</th>
@@ -86,6 +87,7 @@
                         <tbody>
                             {% for user in users %}
                             <tr>
+                                <th>1</th>
                                 <th>{{ user.username }}</th>
                                 <th>{{ user.sekolah }}</th>
                                 <th>{{ user.ipa }}</th>

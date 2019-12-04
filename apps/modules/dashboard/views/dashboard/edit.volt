@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pendaftaran | SMArt Lawu</title>
+    <title>mySMArt</title>
 
     {{ assets.outputCss() }}
     {{ assets.outputJs() }}
@@ -10,7 +10,7 @@
     <nav class="navbar navbar-primary bg-primary fixed-top">
             <!-- Brand -->
         <button type="button" id="sidebarCollapse" class="btn btn-primary border-0" >
-                <i class="fas fa-bars"></i>&nbsp&nbsp&nbsp SMA Lawu
+                <i class="fas fa-bars"></i>&nbsp&nbsp&nbsp mySMArt
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             {% if session.has('auth')%}
@@ -38,103 +38,89 @@
     </nav>
 
     <div class="wrapper">
+        {% if session.has('auth')%}
         <nav id="sidebar" class="active">
             <ul class="list-unstyled components">
                 <li>
-                    {{ link_to('', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
-                </li>
-                <li class="active">
-                    {{ link_to('/daftar', '<i class="fa fa-user"></i> Daftar', 'class': 'nav-link') }}
+                    {{ link_to('/user', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
                 </li>
                 <li>
-                    {{ link_to('/ppdb2', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
+                    {{ link_to('/profil', '<i class="fa fa-star"></i> Profil', 'class': 'nav-link') }}
+                </li>
+                <li>
+                    {{ link_to('/ppdb', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
+        {% endif %}
 
-        <!-- Page Content  -->
         <div id="content">
+            {% if session.has('auth') == false %}
             <div class="card border-0 mb-3">
                 <div class="card-body">
-                    <h4>Pendaftaran PPDB SMA Lawu 2020</h4>
-                    Sudah mendaftar? {{ link_to('/masuk', 'Masuk', 'class': 'font-weight-bold') }} sekarang.
+                    <h3><center>404 Not found</center></h3>
                 </div>
             </div>
-            <div class="card border-0">
+            {% endif %}
+            {% if session.has('auth')%}
+            <h6>{{ link_to('/profil', '<i class="fa fa-arrow-left"></i>', 'class': 'mb-3') }} &nbsp&nbsp&nbsp Edit Profil</h6>
+            <div class="card border-0 mt-3">
                 <div class="card-body">
-                    {{ flashSession.output() }}
-                    {% if session.has('auth')%}
-                    <div class="alert alert-success" role="alert">
-                        Anda berhasil masuk.
-                    </div>
-                    {% endif %}
-                    {% if session.has('auth') == false %}
-                    <form action="{{ url('/post_register') }}" method="POST">
-                        <h5>Autentikasi</h5>
-                        <div class="form-group">
-                            <label for="nisn">NISN</label>
-                            <input type="text" class="form-control" id="nisn" name="nisn" placeholder="NISN" required>
-                        </div>
+                    <form action="{{ url('/edit_profil') }}" method="edit">
                         <div class="form-group">
                             <label for="username">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Nama Lengkap" required>
+                            <input type="text" class="form-control" id="username" name="username" required value="{{ session.get('auth')['username'] }}">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="sekolah@contoh.com" required>
+                            <input type="email" class="form-control" id="email" name="email" required value="{{ session.get('auth')['email'] }}">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                        </div>
-                        <hr>
-                        <h5>Data Diri</h5>
-                        <div class="form-group">
-                            <label for="sekolah">Asal SMP Sederajat</label>
-                            <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="SMP x Karanganyar" required>
+                            <input type="password" class="form-control" id="password" name="password" required value="{{ session.get('auth')['password'] }}">
                         </div>
                         <div class="form-group">
-                            <label for="kota">Asal Kota</label>
-                            <input type="text" class="form-control" id="kota" name="kota" placeholder="Kota/Kabupaten" required>
+                            <label for="nisn">NISN</label>
+                            <input type="text" class="form-control" id="nisn" name="nisn" required value="{{ session.get('auth')['nisn'] }}">
                         </div>
                         <div class="form-group">
-                            <label for="hp">No. HP</label>
-                            <input type="text" class="form-control" id="hp" name="hp" placeholder="Nomor Handphone" required>
+                            <label for="sekolah">Asal Sekolah</label>
+                            <input type="text" class="form-control" id="sekolah" name="sekolah" required value="{{ session.get('auth')['sekolah'] }}">
                         </div>
-                        <hr>
-                        <h5>PPDB</h5>
                         <div class="form-group">
-                            <label for="skhun">Nomor SKHUN</label>
-                            <input type="text" class="form-control" id="skhun" name="skhun" placeholder="Nomor SKHUN SMP" required>
+                            <label for="skhun">No SKHUN</label>
+                            <input type="text" class="form-control" id="skhun" name="skhun" required value="{{ session.get('auth')['skhun'] }}">
                         </div>
                         <div class="form-group">
                             <label for="nun">Nilai Ujian Nasional</label>
-                            <input type="text" class="form-control" id="nun" name="nun" placeholder="Nilai UN SMP" required>
+                            <input type="text" class="form-control" id="nun" name="nun" required value="{{ session.get('auth')['nun'] }}">
                         </div>
                         <div class="row">
                             <div class="col form-group">
                                 <label for="ipa">IPA</label>
-                                <input type="text" class="form-control" id="ipa" name="ipa" placeholder="Nilai IPA" required>
+                                <input type="text" class="form-control" id="ipa" name="ipa" value="{{ session.get('auth')['ipa'] }}" required>
                             </div>
                             <div class="col form-group">
                                 <label for="ind">B. Indonesia</label>
-                                <input type="text" class="form-control" id="ind" name="ind" placeholder="Nilai B. Indo" required>
+                                <input type="text" class="form-control" id="ind" name="ind" value="{{ session.get('auth')['ind'] }}" required>
                             </div>
                             <div class="col form-group">
                                 <label for="mtk">Matematika</label>
-                                <input type="text" class="form-control" id="mtk" name="mtk" placeholder="Nilai Matematika" required>
+                                <input type="text" class="form-control" id="mtk" name="mtk" value="{{ session.get('auth')['mtk'] }}" required>
                             </div>
                             <div class="col form-group">
                                 <label for="eng">B. Inggris</label>
-                                <input type="text" class="form-control" id="eng" name="eng" placeholder="Nilai B. Inggris" required>
+                                <input type="text" class="form-control" id="eng" name="eng" value="{{ session.get('auth')['eng'] }}" required>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
-                    {% endif %}
                 </div>
             </div>
+            {% endif %}
+            
         </div>
     </div>
+ 
 </body>
 </html>

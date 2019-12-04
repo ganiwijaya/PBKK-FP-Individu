@@ -63,7 +63,7 @@
                     {{ link_to('/masuk', '<i class="fa fa-star"></i> Profil', 'class': 'nav-link') }}
                 </li>
                 <li>
-                    {{ link_to('/daftar', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
+                    {{ link_to('/daftar', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
