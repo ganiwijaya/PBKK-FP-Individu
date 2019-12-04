@@ -45,6 +45,27 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'masuk'
 	]);
 
+	$router->addGet('/user', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'user'
+	]);
+
+	$router->addGet('/profil', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'profil'
+	]);
+
+	$router->addGet('/ppdb', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'ppdb'
+	]);
+
 	$router->addPost('/post_register', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
@@ -64,13 +85,6 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
 	    'action' => 'logout'
-	]);
-
-	$router->addGet('/data', [
-	    'namespace' => 'Phalcon\Init\Backoffice\Controllers\Web',
-		'module' => 'backoffice',
-	    'controller' => 'Data',
-	    'action' => 'data'
 	]);
 
 

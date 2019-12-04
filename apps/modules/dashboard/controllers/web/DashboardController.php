@@ -22,19 +22,12 @@ class DashboardController extends Controller
         $this->view->pick('dashboard/index');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
-        $this->assets->addCss('css/style.css', true);
-
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
-        // $this->assets->addJs('//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', false);
-        // $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', false);
-        // $this->assets->addJs('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', false); 
-
         $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
         $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
         $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
         $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
-        $this->assets->addJs('js/style.js', true);
         $users = Users::find();
 
         $this->view->users = $users;
@@ -46,7 +39,6 @@ class DashboardController extends Controller
         $this->view->pick('dashboard/daftar');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
-
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
         $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
@@ -60,21 +52,58 @@ class DashboardController extends Controller
         $this->view->pick('dashboard/masuk');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
-        $this->assets->addCss('css/style.css', true);
-
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
         $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
         $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
         $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
         $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
-        $this->assets->addJs('js/style.js', true);
+    }
+
+    public function userAction()
+    {
+        $this->view->pick('dashboard/user');
+        $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
+        $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
+        $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
+        $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
+        $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
+        $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
+    }
+
+    public function profilAction()
+    {
+        $this->view->pick('dashboard/profil');
+        $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
+        $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
+        $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
+        $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
+        $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
+        $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
+    }
+
+    public function ppdbAction()
+    {
+        $this->view->pick('dashboard/ppdb');
+        $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
+        $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
+        $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
+        $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
+        $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
+        $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
     }
 
     public function storeAction()
     {
         $user = new Users();
-    	$request = new Request();
+        $request = new Request();
+        $user->nisn = $request->getPost('nisn');
         $user->username = $request->getPost('username');
         $user->email = $request->getPost('email');
         $user->password = $request->getPost('password');
@@ -95,13 +124,11 @@ class DashboardController extends Controller
         {
             if($user->password == $pass){
                 $this->session->set('auth',['username' => $user->username]);
-                // $this->flashSession->success('Anda telah login');
-                $this->response->redirect('/backoffice');
+                $this->response->redirect('/user');
                 // var_dump("masuk");die();
             }
             else{
                 $this->flashSession->error('Password salah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-                // $this->view->tampilan=Users::findFirstByUsername($username);
                 $this->response->redirect('/masuk');
             }
         }
@@ -115,7 +142,6 @@ class DashboardController extends Controller
     public function logoutAction()
     {
         $this->session->destroy();
-        // $this->flashSession->success('Anda telah logout');
         $this->response->redirect('/');
     }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pendaftaran | SMArt Lawu</title>
+    <title>mySMArt</title>
 
     {{ assets.outputCss() }}
     {{ assets.outputJs() }}
@@ -10,7 +10,7 @@
     <nav class="navbar navbar-expand-sm bg-white navbar-light fixed-top">
             <!-- Brand -->
         <button type="button" id="sidebarCollapse" class="btn btn-putih border-0 rounded-0" >
-                <i class="fas fa-bars"></i>&nbsp&nbsp&nbsp SMA Lawu
+                <i class="fas fa-bars"></i>&nbsp&nbsp&nbsp mySMArt
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             {% if session.has('auth')%}
@@ -38,42 +38,43 @@
     </nav>
 
     <div class="wrapper">
+        {% if session.has('auth')%}
         <nav id="sidebar" class="active">
             <ul class="list-unstyled components">
                 <li>
-                    {{ link_to('', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
+                    {{ link_to('/user', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
                 </li>
                 <li class="active">
-                    {{ link_to('/daftar', '<i class="fa fa-edit"></i> Daftar', 'class': 'nav-link') }}
+                    {{ link_to('/profil', '<i class="fa fa-star"></i> Profil', 'class': 'nav-link') }}
+                </li>
+                <li>
+                    {{ link_to('/ppdb', '<i class="fa fa-edit"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
+        {% endif %}
 
-        <!-- Page Content  -->
         <div id="content">
+            {% if session.has('auth') == false %}
             <div class="card border-0 rounded-0 mb-3">
                 <div class="card-body">
-                    <h4>Pendaftaran PPDB 2020</h4>
-                    Sudah mendaftar? {{ link_to('/masuk', 'Masuk', 'class': 'font-weight-bold') }} sekarang.
+                    <h3><center>404 Not found</center></h3>
+                </div>
+            </div>
+            {% endif %}
+            {% if session.has('auth')%}
+            <div class="card border-0 rounded-0 mb-3">
+                <div class="card-body">
+                    <h4>Data Anda</h4>
+                    Data PPDB
                 </div>
             </div>
             <div class="card border-0 rounded-0">
                 <div class="card-body">
-                    {{ flashSession.output() }}
-                    {% if session.has('auth')%}
-                    <div class="alert alert-success rounded-0" role="alert">
-                        Anda berhasil masuk.
-                    </div>
-                    {% endif %}
-                    {% if session.has('auth') == false %}
-                    <form action="{{ url('/post_register') }}" method="POST">
-                        <div class="form-group">
-                            <label for="username">NISN</label>
-                            <input type="text" class="form-control rounded-0" id="nisn" name="nisn" required>
-                        </div>
+                    <form action="{{ url('/post_register') }}" method="edit">
                         <div class="form-group">
                             <label for="username">Nama Lengkap</label>
-                            <input type="text" class="form-control rounded-0" id="username" name="username" required>
+                            <input type="text" class="form-control rounded-0" id="username" name="username" required value="{{ auth.username }}">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -85,10 +86,12 @@
                         </div>
                         <button type="submit" class="btn btn-primary rounded-0">Submit</button>
                     </form>
-                    {% endif %}
                 </div>
             </div>
+            {% endif %}
+            
         </div>
     </div>
+ 
 </body>
 </html>
