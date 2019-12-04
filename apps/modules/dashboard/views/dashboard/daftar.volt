@@ -67,21 +67,56 @@
                     {% endif %}
                     {% if session.has('auth') == false %}
                     <form action="{{ url('/post_register') }}" method="POST">
+                        <h5>Autentikasi</h5>
                         <div class="form-group">
-                            <label for="username">NISN</label>
-                            <input type="text" class="form-control rounded-0" id="nisn" name="nisn" required>
+                            <label for="nisn">NISN</label>
+                            <input type="text" class="form-control rounded-0" id="nisn" name="nisn" placeholder="NISN" required>
                         </div>
                         <div class="form-group">
                             <label for="username">Nama Lengkap</label>
-                            <input type="text" class="form-control rounded-0" id="username" name="username" required>
+                            <input type="text" class="form-control rounded-0" id="username" name="username" placeholder="Nama Lengkap" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control rounded-0" id="email" name="email" required>
+                            <input type="email" class="form-control rounded-0" id="email" name="email" placeholder="sekolah@contoh.com" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control rounded-0" id="password" name="password" required>
+                            <input type="password" class="form-control rounded-0" id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <br>
+                        <h5>Data Diri</h5>
+                        <div class="form-group">
+                            <label for="sekolah">Asal SMP Sederajat</label>
+                            <input type="text" class="form-control rounded-0" id="sekolah" name="sekolah" placeholder="SMP x Karanganyar" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kota">Asal Kota</label>
+                            <input type="text" class="form-control rounded-0" id="kota" name="kota" placeholder="Kota/Kabupaten" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hp">No. HP</label>
+                            <input type="text" class="form-control rounded-0" id="hp" name="hp" placeholder="Nomor Handphone" required>
+                        </div>
+                        <br>
+                        <h5>PPDB</h5>
+                        <div class="form-group">
+                            <label for="skhun">Nomor SKHUN</label>
+                            <input type="text" class="form-control rounded-0" id="skhun" name="skhun" placeholder="Nomor SKHUN SMP" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nun">Nilai Ujian Nasional</label>
+                            <input type="text" class="form-control rounded-0" id="nun" name="nun" placeholder="Nilai UN SMP" required>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="ipa">Nilai IPA</label>
+                                <input type="text" class="form-control rounded-0" id="ipa" name="ipa" placeholder="IPA" required>
+                            </div>
+                            <div class="col">
+                                <label for="ind">Nilai Bhs Indonesia</label>
+                                <input type="text" class="form-control rounded-0" id="ind" name="ind" placeholder="Bhs Indo" required>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary rounded-0">Submit</button>
                     </form>
