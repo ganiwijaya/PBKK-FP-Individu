@@ -70,6 +70,10 @@
                 </div>
             </div>
             {{ flashSession.output() }}
+            <!-- <form method="post" action="{{ url('/profil/downloadpdf') }}">   
+                <input type="submit" name="download" class="btn btn-success" value="Download">
+                <button type="submit" name="download" id="download" class="btn btn-primary">Download</button>
+            </form> -->
             <div class="card border-0 mb-3">
                 <div class="card-body">
                     <div class="row">

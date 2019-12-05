@@ -74,7 +74,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Asal Sekolah</th>
                                 <th>IPA</th>
@@ -87,7 +86,6 @@
                         <tbody>
                             {% for user in users %}
                             <tr>
-                                <th>1</th>
                                 <th>{{ user.username }}</th>
                                 <th>{{ user.sekolah }}</th>
                                 <th>{{ user.ipa }}</th>

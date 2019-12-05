@@ -67,6 +67,7 @@
             <div class="card border-0 mt-3">
                 <div class="card-body">
                     <form action="{{ url('/profil/editppdb') }}" method="POST">
+                        <input type="hidden" id="id" name="id" value="{{ session.get('auth')['id'] }}">
                         <div class="form-group">
                             <label for="nisn">NISN</label>
                             <input type="text" class="form-control" id="nisn" name="nisn" required value="{{ session.get('auth')['nisn'] }}">

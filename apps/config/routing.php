@@ -94,14 +94,14 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'ppdb'
 	]);
 
-	$router->addGet('/ppdb2', [
+	$router->addGet('/ppdb2019', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
-	    'action' => 'ppdb2'
+	    'action' => 'ppdb2019'
 	]);
 
-	$router->addGet('/downloadpdf', [
+	$router->addGet('profil/downloadpdf', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',

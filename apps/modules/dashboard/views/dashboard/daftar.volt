@@ -47,7 +47,7 @@
                     {{ link_to('/daftar', '<i class="fa fa-user"></i> Daftar', 'class': 'nav-link') }}
                 </li>
                 <li>
-                    {{ link_to('/ppdb2', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
+                    {{ link_to('/ppdb2019', '<i class="fa fa-list"></i> PPDB', 'class': 'nav-link') }}
                 </li>
             </ul>
         </nav>
@@ -72,10 +72,6 @@
                     <form action="{{ url('/post_register') }}" method="POST">
                         <h5>Autentikasi</h5>
                         <div class="form-group">
-                            <label for="nisn">NISN</label>
-                            <input type="text" class="form-control" id="nisn" name="nisn" placeholder="NISN" required>
-                        </div>
-                        <div class="form-group">
                             <label for="username">Nama Lengkap</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Nama Lengkap" required>
                         </div>
@@ -89,6 +85,10 @@
                         </div>
                         <hr>
                         <h5>Data Diri</h5>
+                        <div class="form-group">
+                            <label for="nisn">NISN</label>
+                            <input type="text" class="form-control" id="nisn" name="nisn" placeholder="NISN" required>
+                        </div>
                         <div class="form-group">
                             <label for="sekolah">Asal SMP Sederajat</label>
                             <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="SMP x Karanganyar" required>

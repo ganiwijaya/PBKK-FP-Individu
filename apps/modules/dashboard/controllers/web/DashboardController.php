@@ -182,9 +182,9 @@ class DashboardController extends Controller
         $this->view->users = $users;
     }
 
-    public function ppdb2Action()
+    public function ppdb2019Action()
     {
-        $this->view->pick('dashboard/ppdb2');
+        $this->view->pick('dashboard/ppdb2019');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
@@ -217,28 +217,50 @@ class DashboardController extends Controller
         $user->eng = $request->getPost('eng');
     	$user->save();
         $this->response->redirect('/masuk');
+        $this->flashSession->success('Berhasil mendaftar. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
     }
     
 
     public function downloadAction()
     {
-        $user = new Users();
-        $request = new Request();
-        $user->nisn = $request->getPost('nisn');
-        $user->username = $request->getPost('username');
-        $user->email = $request->getPost('email');
-        $user->password = $request->getPost('password');
-        $user->sekolah = $request->getPost('sekolah');
-        $user->kota = $request->getPost('kota');
-        $user->hp = $request->getPost('hp');
-        $user->skhun = $request->getPost('skhun');
-        $user->nun = $request->getPost('nun');
-        $user->ipa = $request->getPost('ipa');
-        $user->ind = $request->getPost('ind');
-        $user->mtk = $request->getPost('mtk');
-        $user->eng = $request->getPost('eng');
-    	$user->save();
-        $this->response->redirect('/profil');
+        $id = $this->request->getPost("id");
+        $users = Users::findFirstById($id);
+        $users->nisn = $this->request->getPost("nisn");
+        $users->sekolah = $this->request->getPost("sekolah");
+        $users->skhun = $this->request->getPost("skhun");
+        $users->nun = $this->request->getPost("nun");
+        $users->ipa = $this->request->getPost("ipa");
+        $users->ind = $this->request->getPost("ind");
+        $users->mtk = $this->request->getPost("mtk");
+        $users->eng = $this->request->getPost("eng");
+
+        require("//geniuskaranganyar.com/assets/extra/fpdf/fpdf.php");
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont("Arial", "B", 16);
+        $pdf->Cell(180,10,"PPDB SMA Lawu",1,1);
+
+        $pdf->Cell(90, 10, "ID", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$id}", 1,1);
+
+        $pdf->Cell(90, 10, "Nama", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$name}", 1,1);
+
+        $pdf->Cell(90, 10, "Asal Sekolah", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$school1}", 1,1);
+
+        $pdf->Cell(90, 10, "Sekolah Pilihan 1", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$school2}", 1,1);
+
+        $pdf->Cell(90, 10, "Sekolah Pilihan 2", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$school3}", 1,1);
+
+        $pdf->output();
     }
 
     public function loginAction()
