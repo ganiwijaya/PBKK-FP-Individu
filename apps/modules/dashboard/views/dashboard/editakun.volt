@@ -42,7 +42,7 @@
         <nav id="sidebar" class="active">
             <ul class="list-unstyled components">
                 <li>
-                    {{ link_to('/user', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
+                    {{ link_to('/beranda', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
                 </li>
                 <li>
                     {{ link_to('/profil', '<i class="fa fa-star"></i> Profil', 'class': 'nav-link') }}
@@ -63,10 +63,10 @@
             </div>
             {% endif %}
             {% if session.has('auth')%}
-            <h6>{{ link_to('/profil', '<i class="fa fa-arrow-left"></i>', 'class': 'mb-3') }} &nbsp&nbsp&nbsp Edit Profil</h6>
+            <h6>{{ link_to('/profil', '<i class="fa fa-arrow-left"></i>', 'class': 'mb-3') }} &nbsp&nbsp&nbsp Edit Akun</h6>
             <div class="card border-0 mt-3">
                 <div class="card-body">
-                    <form action="{{ url('/editakun1') }}" method="POST">
+                    <form action="{{ url('/profil/edit') }}" method="POST">
                         <input type="hidden" id="id" name="id" value="{{ session.get('auth')['id'] }}">
                         <div class="form-group">
                             <label for="username">Nama Lengkap</label>

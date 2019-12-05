@@ -42,7 +42,7 @@
         <nav id="sidebar" class="active">
             <ul class="list-unstyled components">
                 <li>
-                    {{ link_to('/user', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
+                    {{ link_to('/beranda', '<i class="fa fa-home"></i> Utama', 'class': 'nav-link') }}
                 </li>
                 <li class="active">
                     {{ link_to('/profil', '<i class="fa fa-user"></i> Profil', 'class': 'nav-link') }}
@@ -69,6 +69,7 @@
                     Data Anda di PPDB.
                 </div>
             </div>
+            {{ flashSession.output() }}
             <div class="card border-0 mb-3">
                 <div class="card-body">
                     <div class="row">
@@ -76,7 +77,7 @@
                             <h5>Akun</h5>
                         </div>
                         <div class="col-sm">
-                            {{ link_to('/editakun', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
+                            {{ link_to('/profil/edit', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
                         </div>
                     </div>
                     <hr>
@@ -94,7 +95,7 @@
                             <h5>Data PPDB</h5>
                         </div>
                         <div class="col-sm">
-                            {{ link_to('/editppdb', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
+                            {{ link_to('/profil/editppdb', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
                         </div>
                     </div>
                     <hr>

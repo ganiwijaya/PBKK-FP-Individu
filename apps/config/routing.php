@@ -45,7 +45,7 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'masuk'
 	]);
 
-	$router->addGet('/user', [
+	$router->addGet('/beranda', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
@@ -59,25 +59,32 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'profil'
 	]);
 
-	$router->addGet('/editakun', [
+	$router->addGet('/profil/edit', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
 	    'action' => 'editakun'
 	]);
 
-	$router->addPost('/editakun1', [
+	$router->addPost('/profil/edit', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
 	    'action' => 'editakun1'
 	]);
 
-	$router->addGet('/editppdb', [
+	$router->addGet('/profil/editppdb', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
 	    'action' => 'editppdb'
+	]);
+
+	$router->addPost('/profil/editppdb', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'editppdb1'
 	]);
 
 	$router->addGet('/ppdb', [

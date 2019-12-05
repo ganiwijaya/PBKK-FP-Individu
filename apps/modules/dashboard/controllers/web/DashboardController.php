@@ -112,15 +112,19 @@ class DashboardController extends Controller
     public function editakun1Action()
     {
         $id = $this->request->getPost("id");
-        $user = User::findFirstById($id);
-        $user->nama_user = $this->request->getPost("txt_nama");
-        $user->email_user = $this->request->getPost("txt_email");
-        if (!$user->save()) {
-        echo "Gagal Disimpan";
+        $users = Users::findFirstById($id);
+        $users->username = $this->request->getPost("username");
+        $users->email = $this->request->getPost("email");
+        $users->password = $this->request->getPost("password");
+        if (!$users->save()) 
+        {
+            $this->flashSession->error('Data gagal diperbarui. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+            $this->response->redirect('/profil');
         }
         else
         {
-        echo "Data Berhasil Diupdate";
+            $this->flashSession->success('Data berhasil diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+            $this->response->redirect('/profil');
         }
     }
 
@@ -136,6 +140,30 @@ class DashboardController extends Controller
         $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
         $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
 
+    }
+
+    public function editppdb1Action()
+    {
+        $id = $this->request->getPost("id");
+        $users = Users::findFirstById($id);
+        $users->nisn = $this->request->getPost("nisn");
+        $users->sekolah = $this->request->getPost("sekolah");
+        $users->skhun = $this->request->getPost("skhun");
+        $users->nun = $this->request->getPost("nun");
+        $users->ipa = $this->request->getPost("ipa");
+        $users->ind = $this->request->getPost("ind");
+        $users->mtk = $this->request->getPost("mtk");
+        $users->eng = $this->request->getPost("eng");
+        if (!$users->save()) 
+        {
+            $this->flashSession->error('Data gagal diperbarui. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+            $this->response->redirect('/profil');
+        }
+        else
+        {
+            $this->flashSession->success('Data berhasil diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+            $this->response->redirect('/profil');
+        }
     }
 
     public function ppdbAction()
@@ -240,7 +268,7 @@ class DashboardController extends Controller
                     'eng' => $user->eng
                 ]);
                 
-                $this->response->redirect('/user');
+                $this->response->redirect('/beranda');
                 // var_dump("masuk");die();
             }
             else{
