@@ -65,20 +65,20 @@
             {% if session.has('auth')%}
             <div class="card border-0 mb-3">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm">
-                            <h4>Data Anda</h4>
-                            Data Anda di PPDB.
-                        </div>
-                        <div class="col-sm">
-                            {{ link_to('/edit', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary float-right') }}
-                        </div>
-                    </div>
+                    <h4>Data Anda</h4>
+                    Data Anda di PPDB.
                 </div>
             </div>
             <div class="card border-0 mb-3">
                 <div class="card-body">
-                    <h5>Akun</h5>
+                    <div class="row">
+                        <div class="col-sm">
+                            <h5>Akun</h5>
+                        </div>
+                        <div class="col-sm">
+                            {{ link_to('/editakun', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
+                        </div>
+                    </div>
                     <hr>
                     Nama<br>
                     <strong>{{ session.get('auth')['username'] }}</strong>
@@ -89,7 +89,14 @@
             </div>
             <div class="card border-0 mb-3">
                 <div class="card-body">
-                    <h5>Data PPDB</h5>
+                    <div class="row">
+                        <div class="col-sm">
+                            <h5>Data PPDB</h5>
+                        </div>
+                        <div class="col-sm">
+                            {{ link_to('/editppdb', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
+                        </div>
+                    </div>
                     <hr>
                     NISN<br>
                     <strong>{{ session.get('auth')['nisn'] }}</strong>

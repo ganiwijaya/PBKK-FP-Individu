@@ -62,6 +62,7 @@ class DashboardController extends Controller
 
     public function userAction()
     {
+        
         $this->view->pick('dashboard/user');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
@@ -75,6 +76,13 @@ class DashboardController extends Controller
 
     public function profilAction()
     {
+        // if ($this->session->has('auth')) {
+        //     $session_user = $this->session->get("id");
+        //     $akun = Users::findFirstById($session_user);
+
+        //     $this->view->akun = $akun;
+        // }
+        
         $this->view->pick('dashboard/profil');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
@@ -87,9 +95,38 @@ class DashboardController extends Controller
 
     }
 
-    public function editAction()
+    public function editakunAction()
     {
-        $this->view->pick('dashboard/edit');
+        $this->view->pick('dashboard/editakun');
+        $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
+        $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
+        $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/fontawesome.js', false);
+        $this->assets->addJs('//code.jquery.com/jquery-3.3.1.slim.min.js', false);
+        $this->assets->addJs('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', false);
+        $this->assets->addJs('//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', false); 
+        $this->assets->addJs('//geniuskaranganyar.com/assets/extra/js/style.js', false);
+
+    }
+
+    public function editakun1Action()
+    {
+        $id = $this->request->getPost("id");
+        $user = User::findFirstById($id);
+        $user->nama_user = $this->request->getPost("txt_nama");
+        $user->email_user = $this->request->getPost("txt_email");
+        if (!$user->save()) {
+        echo "Gagal Disimpan";
+        }
+        else
+        {
+        echo "Data Berhasil Diupdate";
+        }
+    }
+
+    public function editppdbAction()
+    {
+        $this->view->pick('dashboard/editppdb');
         $this->assets->addCss('//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', false);
         $this->assets->addCss('//geniuskaranganyar.com/assets/extra/css/style.css', false);
         $this->assets->addJs('//use.fontawesome.com/releases/v5.0.13/js/solid.js', false);
@@ -153,6 +190,28 @@ class DashboardController extends Controller
     	$user->save();
         $this->response->redirect('/masuk');
     }
+    
+
+    public function downloadAction()
+    {
+        $user = new Users();
+        $request = new Request();
+        $user->nisn = $request->getPost('nisn');
+        $user->username = $request->getPost('username');
+        $user->email = $request->getPost('email');
+        $user->password = $request->getPost('password');
+        $user->sekolah = $request->getPost('sekolah');
+        $user->kota = $request->getPost('kota');
+        $user->hp = $request->getPost('hp');
+        $user->skhun = $request->getPost('skhun');
+        $user->nun = $request->getPost('nun');
+        $user->ipa = $request->getPost('ipa');
+        $user->ind = $request->getPost('ind');
+        $user->mtk = $request->getPost('mtk');
+        $user->eng = $request->getPost('eng');
+    	$user->save();
+        $this->response->redirect('/profil');
+    }
 
     public function loginAction()
     {
@@ -161,12 +220,13 @@ class DashboardController extends Controller
         $user = Users::findFirst("email='$username'");
         $pass = $request->getPost('pw');
         $users = Users::find();
-        $this->view->users = $users;
+        // $this->view->users = $users;
         // var_dump($pass);die();
         if($user)
         {
             if($user->password == $pass){
                 $this->session->set('auth',[
+                    'id' => $user->id,
                     'username' => $user->username,
                     'email' => $user->email,
                     'password' => $user->password,
@@ -179,6 +239,7 @@ class DashboardController extends Controller
                     'mtk' => $user->mtk,
                     'eng' => $user->eng
                 ]);
+                
                 $this->response->redirect('/user');
                 // var_dump("masuk");die();
             }

@@ -59,11 +59,25 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'profil'
 	]);
 
-	$router->addGet('/edit', [
+	$router->addGet('/editakun', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
-	    'action' => 'edit'
+	    'action' => 'editakun'
+	]);
+
+	$router->addPost('/editakun1', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'editakun1'
+	]);
+
+	$router->addGet('/editppdb', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'editppdb'
 	]);
 
 	$router->addGet('/ppdb', [
@@ -78,6 +92,13 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
 	    'action' => 'ppdb2'
+	]);
+
+	$router->addGet('/downloadpdf', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'download'
 	]);
 
 	$router->addPost('/post_register', [

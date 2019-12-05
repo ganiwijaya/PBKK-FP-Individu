@@ -66,7 +66,8 @@
             <h6>{{ link_to('/profil', '<i class="fa fa-arrow-left"></i>', 'class': 'mb-3') }} &nbsp&nbsp&nbsp Edit Profil</h6>
             <div class="card border-0 mt-3">
                 <div class="card-body">
-                    <form action="{{ url('/edit_profil') }}" method="edit">
+                    <form action="{{ url('/editakun1') }}" method="POST">
+                        <input type="hidden" id="id" name="id" value="{{ session.get('auth')['id'] }}">
                         <div class="form-group">
                             <label for="username">Nama Lengkap</label>
                             <input type="text" class="form-control" id="username" name="username" required value="{{ session.get('auth')['username'] }}">
@@ -78,40 +79,6 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required value="{{ session.get('auth')['password'] }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="nisn">NISN</label>
-                            <input type="text" class="form-control" id="nisn" name="nisn" required value="{{ session.get('auth')['nisn'] }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="sekolah">Asal Sekolah</label>
-                            <input type="text" class="form-control" id="sekolah" name="sekolah" required value="{{ session.get('auth')['sekolah'] }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="skhun">No SKHUN</label>
-                            <input type="text" class="form-control" id="skhun" name="skhun" required value="{{ session.get('auth')['skhun'] }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="nun">Nilai Ujian Nasional</label>
-                            <input type="text" class="form-control" id="nun" name="nun" required value="{{ session.get('auth')['nun'] }}">
-                        </div>
-                        <div class="row">
-                            <div class="col form-group">
-                                <label for="ipa">IPA</label>
-                                <input type="text" class="form-control" id="ipa" name="ipa" value="{{ session.get('auth')['ipa'] }}" required>
-                            </div>
-                            <div class="col form-group">
-                                <label for="ind">B. Indonesia</label>
-                                <input type="text" class="form-control" id="ind" name="ind" value="{{ session.get('auth')['ind'] }}" required>
-                            </div>
-                            <div class="col form-group">
-                                <label for="mtk">Matematika</label>
-                                <input type="text" class="form-control" id="mtk" name="mtk" value="{{ session.get('auth')['mtk'] }}" required>
-                            </div>
-                            <div class="col form-group">
-                                <label for="eng">B. Inggris</label>
-                                <input type="text" class="form-control" id="eng" name="eng" value="{{ session.get('auth')['eng'] }}" required>
-                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
