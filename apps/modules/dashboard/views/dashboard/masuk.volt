@@ -20,6 +20,7 @@
                             {{ session.get('auth')['username'] }}
                         </a>
                         <div class="dropdown-menu">
+                                {{ link_to('/profil', 'Akun', 'class': 'dropdown-item') }}
                             <form action="{{url('/logout')}}" method="post">
                                 <button type="submit" class="dropdown-item">Keluar</button>
                             </form>
