@@ -14,24 +14,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             {% if session.has('auth')%}
-                <ul class="nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="btn btn-primary border-0" href="#" id="navbardrop" data-toggle="dropdown">
-                            {{ session.get('auth')['username'] }}
-                        </a>
-                        <div class="dropdown-menu">
-                                {{ link_to('/profil', 'Akun', 'class': 'dropdown-item') }}
-                            <form action="{{url('/logout')}}" method="post">
-                                <button type="submit" class="dropdown-item">Keluar</button>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary" data-toggle="dropdown">
+                        {{ session.get('auth')['username'] }}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <form action="{{url('/logout')}}" method="post">
+                            <button type="submit" class="dropdown-item">Keluar</button>
+                        </form>
+                    </div>
+                </div>
             {% endif %}
             {% if session.has('auth') == false %}
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item">
-                        {{ link_to('/masuk', 'mySMArt', 'class': 'btn btn-primary') }}
+                        {{ link_to('/masuk', '<i class="fa fa-user"></i> mySMArt', 'class': 'btn btn-primary') }}
                     </li>
                 </ul>
             {% endif %}

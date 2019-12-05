@@ -157,12 +157,12 @@ class DashboardController extends Controller
         if (!$users->save()) 
         {
             $this->flashSession->error('Data gagal diperbarui. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-            $this->response->redirect('/profil');
+            $this->response->redirect('/ppdb');
         }
         else
         {
             $this->flashSession->success('Data berhasil diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-            $this->response->redirect('/profil');
+            $this->response->redirect('/ppdb');
         }
     }
 
@@ -302,6 +302,19 @@ class DashboardController extends Controller
     {
         $this->session->destroy();
         $this->response->redirect('/');
+    }
+
+    public function hapusAction()
+    {
+        $users = Users::findFirstById($id);
+  
+        if (!$users->delete()) {
+        echo "Gagal Hapus Data";
+        }
+        else
+        {
+        echo "Berhasil Hapus Data";
+        }
     }
 
 }   

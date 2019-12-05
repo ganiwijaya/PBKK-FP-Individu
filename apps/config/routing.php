@@ -73,14 +73,14 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 	    'action' => 'editakun1'
 	]);
 
-	$router->addGet('/profil/editppdb', [
+	$router->addGet('/ppdb/edit', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
 	    'action' => 'editppdb'
 	]);
 
-	$router->addPost('/profil/editppdb', [
+	$router->addPost('/ppdb/edit', [
 	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
@@ -106,6 +106,13 @@ $di['router'] = function() use ($defaultModule, $modules, $di, $config) {
 		'module' => 'dashboard',
 	    'controller' => 'Dashboard',
 	    'action' => 'download'
+	]);
+
+	$router->addPost('/hapus', [
+	    'namespace' => 'Phalcon\Init\Dashboard\Controllers\Web',
+		'module' => 'dashboard',
+	    'controller' => 'Dashboard',
+	    'action' => 'hapus'
 	]);
 
 	$router->addPost('/post_register', [

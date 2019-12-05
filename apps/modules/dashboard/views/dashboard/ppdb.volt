@@ -14,23 +14,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             {% if session.has('auth')%}
-                <ul class="nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="btn btn-primary border-0" href="#" id="navbardrop" data-toggle="dropdown">
-                            {{ session.get('auth')['username'] }}
-                        </a>
-                        <div class="dropdown-menu">
-                            <form action="{{url('/logout')}}" method="post">
-                                <button type="submit" class="dropdown-item">Keluar</button>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary" data-toggle="dropdown">
+                        {{ session.get('auth')['username'] }}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <form action="{{url('/logout')}}" method="post">
+                            <button type="submit" class="dropdown-item">Keluar</button>
+                        </form>
+                    </div>
+                </div>
             {% endif %}
             {% if session.has('auth') == false %}
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item">
-                        {{ link_to('/masuk', 'mySMArt', 'class': 'btn btn-primary') }}
+                        {{ link_to('/masuk', '<i class="fa fa-user"></i> mySMArt', 'class': 'btn btn-primary') }}
                     </li>
                 </ul>
             {% endif %}
@@ -65,12 +63,55 @@
             {% if session.has('auth')%}
             <div class="card mb-3 border-0">
                 <div class="card-body">
-                    <h4>Pendaftar PPDB 2019</h4>
+                    <h4>Pendaftaran PPDB SMA Lawu 2019</h4>
                     Data pendaftar.
+                </div>
+            </div>
+            {{ flashSession.output() }}
+            <div class="card mb-3 border-0 mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h5>Data Anda</h5>
+                        </div>
+                        <div class="col-sm">
+                            {{ link_to('/ppdb/edit', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
+                        </div>
+                    </div>
+                    <hr>
+                    NISN<br>
+                    <strong>{{ session.get('auth')['nisn'] }}</strong>
+                    <hr>
+                    Asal Sekolah<br>
+                    <strong>{{ session.get('auth')['sekolah'] }}</strong>
+                    <hr>
+                    Nilai Ujian SMP<br>
+                    <strong>{{ session.get('auth')['nun'] }}</strong>
+                    <hr>
+                    Rincian:
+                    <div class="row">
+                        <div class="col-sm">
+                            IPA<br>
+                            <strong>{{ session.get('auth')['ipa'] }}</strong>
+                        </div>
+                        <div class="col-sm">
+                            B. Indonesia<br>
+                            <strong>{{ session.get('auth')['ind'] }}</strong>
+                        </div>
+                        <div class="col-sm">
+                            Matematika<br>
+                            <strong>{{ session.get('auth')['mtk'] }}</strong>
+                        </div>
+                        <div class="col-sm">
+                            B. Inggris<br>
+                            <strong>{{ session.get('auth')['eng'] }}</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card border-0">
                 <div class="card-body">
+                    <h5>Data PPDB</h5>
                     <table class="table table-hover">
                         <thead>
                             <tr>
