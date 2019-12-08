@@ -116,6 +116,7 @@ class DashboardController extends Controller
         $users->username = $this->request->getPost("username");
         $users->email = $this->request->getPost("email");
         $users->password = $this->request->getPost("password");
+        $users->kota = $this->request->getPost("kota");
         if (!$users->save()) 
         {
             $this->flashSession->error('Data gagal diperbarui. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
@@ -221,40 +222,40 @@ class DashboardController extends Controller
     }
     
 
-    // public function downloadAction()
-    // {
-    //     $this->view->disable();
+    public function downloadAction()
+    {
+        $this->view->disable();
 
-    //     $id = $this->request->getPost('id');   
+        $id = $this->request->getPost('id');   
 
-    //     $rez['rez'] = Users::findFirstId($id)
-    //     $pdf = new FPDF();
-    //     $pdf->AddPage();
-    //     $pdf->SetFont("Arial", "B", 16);
-    //     $pdf->Cell(180,10,"PPDB SMA Lawu",1,1);
+        $users = Users::find();
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont("Arial", "B", 16);
+        $pdf->Cell(180,10,"PPDB SMA Lawu",1,1);
 
-    //     $pdf->Cell(90, 10, "ID", 1,0);
-    //     $pdf->SetFont("Arial");
-    //     $pdf->Cell(90, 10, "{$id}", 1,1);
+        $pdf->Cell(90, 10, "ID", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$id}", 1,1);
 
-    //     $pdf->Cell(90, 10, "Nama", 1,0);
-    //     $pdf->SetFont("Arial");
-    //     $pdf->Cell(90, 10, "{$name}", 1,1);
+        $pdf->Cell(90, 10, "Nama", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$name}", 1,1);
 
-    //     $pdf->Cell(90, 10, "Asal Sekolah", 1,0);
-    //     $pdf->SetFont("Arial");
-    //     $pdf->Cell(90, 10, "{$school1}", 1,1);
+        $pdf->Cell(90, 10, "Asal Sekolah", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$school1}", 1,1);
 
-    //     $pdf->Cell(90, 10, "Sekolah Pilihan 1", 1,0);
-    //     $pdf->SetFont("Arial");
-    //     $pdf->Cell(90, 10, "{$school2}", 1,1);
+        $pdf->Cell(90, 10, "Sekolah Pilihan 1", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$school2}", 1,1);
 
-    //     $pdf->Cell(90, 10, "Sekolah Pilihan 2", 1,0);
-    //     $pdf->SetFont("Arial");
-    //     $pdf->Cell(90, 10, "{$school3}", 1,1);
+        $pdf->Cell(90, 10, "Sekolah Pilihan 2", 1,0);
+        $pdf->SetFont("Arial");
+        $pdf->Cell(90, 10, "{$school3}", 1,1);
 
-    //     $pdf->output();
-    // }
+        $pdf->output();
+    }
 
     public function loginAction()
     {
@@ -272,6 +273,7 @@ class DashboardController extends Controller
                     'id' => $user->id,
                     'username' => $user->username,
                     'email' => $user->email,
+                    'kota' => $user->kota,
                     'password' => $user->password,
                     'nisn' => $user->nisn,
                     'sekolah' => $user->sekolah,

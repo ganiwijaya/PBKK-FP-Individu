@@ -75,7 +75,18 @@
                             <h5>Data Anda</h5>
                         </div>
                         <div class="col-sm">
-                            {{ link_to('/ppdb/edit', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary btn-sm float-right mr-3y" data-toggle="dropdown">
+                                    <i class="fa fa-list"></i> Kelola
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    {{ link_to('/ppdb/edit', 'Edit', 'class': 'dropdown-item') }}
+                                    <form method="post" action="{{ url('/profil/downloadpdf') }}">   
+                                        <!-- <input type="submit" name="download" class="btn btn-success btn-sm float-right mr-3" value="Download"> -->
+                                        <button type="submit" name="download" id="download" class="dropdown-item">Download</button>
+                                    </form>
+                                </div>
+                            </div>       
                         </div>
                     </div>
                     <hr>

@@ -61,28 +61,27 @@
             </div>
             {% endif %}
             {% if session.has('auth')%}
-            <div class="card border-0 mb-3">
-                <div class="card-body">
-                    <h4>Data Anda</h4>
-                    Data Anda di PPDB.
-                </div>
-            </div>
             {{ flashSession.output() }}
-            <!-- <form method="post" action="{{ url('/profil/downloadpdf') }}">   
-                <input type="submit" name="download" class="btn btn-success" value="Download">
-                <button type="submit" name="download" id="download" class="btn btn-primary">Download</button>
-            </form> -->
             <div class="card border-0 mb-3">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm">
-                            <h5>Akun</h5>
+                            <h4>Profil</h4>
+                            Rincian akun Anda.
                         </div>
                         <div class="col-sm">
-                            {{ link_to('/profil/edit', '<i class="fa fa-edit"></i> Edit', 'class': 'btn btn-primary btn-sm float-right') }}
-                            <form action="{{url('/hapus')}}" method="post">
-                                <button type="submit" class="btn btn-danger btn-sm float-right"><i class="fa fa-trash"></i> Hapus</button>
-                            </form>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary btn-sm float-right mr-3y" data-toggle="dropdown">
+                                    <i class="fa fa-list"></i> Kelola
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    {{ link_to('/profil/edit', 'Edit', 'class': 'dropdown-item') }}
+                                    <form method="post" action="{{ url('/hapus') }}">   
+                                        <!-- <input type="submit" name="download" class="btn btn-success btn-sm float-right mr-3" value="Download"> -->
+                                        <button type="submit" name="hapus" id="hapus" class="dropdown-item">Hapus Akun</button>
+                                    </form>
+                                </div>
+                            </div>  
                         </div>
                     </div>
                     <hr>
@@ -91,6 +90,9 @@
                     <hr>
                     Email<br>
                     <strong>{{ session.get('auth')['email'] }}</strong>
+                    <hr>
+                    Asal Kota<br>
+                    <strong>{{ session.get('auth')['kota'] }}</strong>
                 </div>
             </div>
             {% endif %}

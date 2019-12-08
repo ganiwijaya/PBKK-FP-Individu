@@ -68,7 +68,7 @@
                     {% endif %}
                     {% if session.has('auth') == false %}
                     <form action="{{ url('/post_register') }}" method="POST">
-                        <h5>Autentikasi</h5>
+                        <h5>Akun</h5>
                         <div class="form-group">
                             <label for="username">Nama Lengkap</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Nama Lengkap" required>

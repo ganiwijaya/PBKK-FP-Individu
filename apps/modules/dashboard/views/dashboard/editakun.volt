@@ -75,6 +75,10 @@
                             <input type="email" class="form-control" id="email" name="email" required value="{{ session.get('auth')['email'] }}">
                         </div>
                         <div class="form-group">
+                            <label for="kota">Asal Kota</label>
+                            <input type="text" class="form-control" id="kota" name="kota" required value="{{ session.get('auth')['kota'] }}">
+                        </div>
+                        <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required value="{{ session.get('auth')['password'] }}">
                         </div>
